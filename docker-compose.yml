@@ -1,0 +1,10 @@
+version: '3.5'
+
+services:
+  postgres:
+    image: postgres:alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=12345
+    ports: 
+      - 5432:5432
