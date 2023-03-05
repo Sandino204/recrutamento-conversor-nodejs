@@ -3,10 +3,12 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ExchangeModule } from './modules/exchange/exchange.module';
 
 @Module({
   imports: [
     AuthModule,
+    ExchangeModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: "localhost",
