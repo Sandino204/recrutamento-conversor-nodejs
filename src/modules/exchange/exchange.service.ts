@@ -31,8 +31,8 @@ export class ExchangeService {
       })
 
       return {
-        from, 
-        to, 
+        from: transaction.from, 
+        to: transaction.to, 
         originValue: transaction.originValue,
         resultValue: transaction.resultValue,
         rate: transaction.rate, 
