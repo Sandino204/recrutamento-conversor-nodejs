@@ -11,6 +11,7 @@ import {
   import { JwtPayload } from './interfaces/jwt-payload.interface';
   import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
+import 'dotenv/config';
   
   @Injectable()
   export class AuthService {
@@ -58,7 +59,7 @@ import { Repository } from 'typeorm';
       if (user && (await bcrypt.compare(password, user.password))) {
         const payload: JwtPayload = { email };
         const accessToken = this.jwtService.sign(payload, {
-          privateKey: 'TopSecret'
+          privateKey: process.env.JWT_SECRET ? process.env.JWT_SECRET : 'mock'
         });
         return { accessToken };
       } else {

@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ExchangeModule } from './modules/exchange/exchange.module';
+import 'dotenv/config';
 
 @Module({
   imports: [
@@ -11,10 +12,10 @@ import { ExchangeModule } from './modules/exchange/exchange.module';
     ExchangeModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: "localhost",
-      port: 5432,
-      username: "postgres",
-      password: "12345",
+      host: process.env.DATABASE_HOST,
+      port: parseInt(process.env.DATABASE_PORT, 10),
+      username: process.env.DATABASE_USER,
+      password: process.env.DATABASE_PASSWORD,
       autoLoadEntities: true,
       synchronize: true,
     }),

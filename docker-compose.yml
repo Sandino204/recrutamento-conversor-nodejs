@@ -1,6 +1,26 @@
 version: '3.5'
 
 services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - PORT=3000
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=12345
+      - JWT_SECRET=TopSecret
+    ports: 
+      - 3000:3000
+    depends_on:
+      - postgres
+    links:
+      - postgres:postgres
+    networks:
+      - currency-api
+
   postgres:
     image: postgres:alpine
     environment:
@@ -8,3 +28,9 @@ services:
       - POSTGRES_PASSWORD=12345
     ports: 
       - 5432:5432
+    networks:
+      - currency-api
+
+networks:
+    currency-api:
+      driver: bridge
