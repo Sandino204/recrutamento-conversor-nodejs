@@ -20,7 +20,7 @@ export class ExchangeApiService {
         .get(this.urlBase + `?to=${payload.to}&from=${payload.from}&amount=${payload.value}`, 
         {
             headers: {
-                'apikey': 'FMSL8Gw2wW5QIUZZ25CJkfteaF1KT9Zt',
+                'apikey': '',
             }
         })
 
